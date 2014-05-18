@@ -1,4 +1,4 @@
---Mod : panneau
+--Mod : signalisation
 --Créé par turbogus
 --Licence graphique & code : GPL2 ou supérieur
 --Description : Ajoute des panneaux de signalisation
@@ -6,7 +6,7 @@
 
 --Panneaux danger lave
 
-	minetest.register_node("panneaux:panneau_danger_lave", {
+	minetest.register_node("signalisation:panneau_danger_lave", {
 		description = "Panneau de signalisation de danger lave",
 		drawtype = "signlike",
 		tiles = {"panneau_danger_lave.png"},
@@ -27,10 +27,32 @@
 	})
 	
 	minetest.register_craft({
-		output = "panneaux:panneau_danger_lave 3",
+		output = "signalisation:panneau_danger_lave 3",
 		recipe = {
 			{'default:wood', 'default:wood', 'default:wood'},
 			{'default:wood', 'default:sand', 'default:wood'},
 			{'', 'default:stick', ''},
 		}
+	})
+	
+-- Bloc jaune & noir
+
+	minetest.register_node("signalisation:bloc_jaune_noir", {
+		description = "Bloc de signalisation jaune et noir",
+		tiles = {"bloc_jaune_noir.png"},
+		is_ground_content = false,
+		walkable = true,
+		pointable = true,
+		diggable = true,
+		groups = {cracky=2,crumbly=3},
+		drop = "signalisation:bloc_jaune_noir",
+	})
+
+	minetest.register_craft({
+		output = 'signalisation:bloc_jaune_noir 4',
+		recipe = {
+			{'dye:yellow','dye:black' },
+			{ 'dye:black','dye:yellow'},
+		
+			}
 	})
