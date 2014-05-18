@@ -46,6 +46,10 @@
 		diggable = true,
 		groups = {cracky=2,crumbly=3},
 		drop = "signalisation:bloc_jaune_noir",
+		sounds = ({
+		footstep = {name="poc", gain=0.25},
+		dug = {name="poc", gain=0.75},
+	}),
 	})
 
 	minetest.register_craft({
