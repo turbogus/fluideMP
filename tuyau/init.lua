@@ -22,6 +22,10 @@ minetest.register_node("tuyau:tuyau", {
 	drawtype = "glasslike",
 	drop = 'tuyau:tuyau',
 	groups = {crumbly=3},
+	makes_footstep_sound = true,
+	sounds = {
+		footstep = "glass_footstep.ogg",
+		},
 })
 
 -- Craft du tuyau vide :
@@ -128,18 +132,16 @@ minetest.register_abm({
 
 minetest.register_node("tuyau:pompe", {
 	description = "pompe",
-	tiles = {"pompe.png"},
+	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_off.png","pompe2_cote_off.png","pompe2_cote_off.png","pompe2_cote_off.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
+	light_source = 2,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
 })
 
--- Craft du tuyau vide :
+-- Craft de la pompe vide :
 
 minetest.register_craft({
 	output = "tuyau:pompe",
@@ -154,13 +156,11 @@ minetest.register_craft({
 
 minetest.register_node("tuyau:pompe_water", {
 	description = "pompe d'eau",
-	tiles = {"pompe_water.png"},
+	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
 	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
 })
@@ -169,13 +169,11 @@ minetest.register_node("tuyau:pompe_water", {
 
 minetest.register_node("tuyau:pompe_lava", {
 	description = "pompe de lave",
-	tiles = {"pompe_lava.png"},
+	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
 	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
 })
@@ -192,8 +190,6 @@ minetest.register_abm({
 			minetest.env:add_node(pos, {name="tuyau:pompe_water"})
 		elseif minetest.env:get_node(pos2).name=="default:lava_source" or minetest.env:get_node(pos2).name=="default:lava_flowing" then
 			minetest.env:add_node(pos, {name="tuyau:pompe_lava"})
-		--else if minetest.env:get_node(pos2).name=="default:gazole_source" or minetest.env:get_node(pos2).name=="default:gazole_flowing" then
-		--	minetest.env:add_node(pos, {name="pompe_gazole"})
 		end
 	end,
 })
@@ -230,13 +226,12 @@ minetest.register_abm({
 
 minetest.register_node("tuyau:sortie", {
 	description = "sortie",
-	tiles = {"sortie.png"},
+	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_off.png", "sortie_off.png", "sortie_off.png", "sortie_off.png"},
 	is_ground_content = false,
 	walkable = true,
 	--pointable = true,
 	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
 })
@@ -256,13 +251,12 @@ minetest.register_craft({
 
 minetest.register_node("tuyau:sortie_water", {
 	description = "sortie d'eau",
-	tiles = {"sortie_water.png"},
+	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_on.png", "sortie_on.png", "sortie_on.png", "sortie_on.png"},
 	is_ground_content = false,
 	walkable = true,
 	--pointable = true,
 	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
 })
@@ -271,13 +265,12 @@ minetest.register_node("tuyau:sortie_water", {
 
 minetest.register_node("tuyau:sortie_lava", {
 	description = "sortie de lave",
-	tiles = {"sortie_lava.png"},
+	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_on.png", "sortie_on.png", "sortie_on.png", "sortie_on.png"},
 	is_ground_content = false,
 	walkable = true,
 	--pointable = true,
 	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
 })
