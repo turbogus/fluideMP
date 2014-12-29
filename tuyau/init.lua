@@ -13,19 +13,18 @@
 
 minetest.register_node("tuyau:tuyau", {
 	description = "tuyau",
+	drawtype = "glasslike_framed_optional",
 	tiles = {"tuyau.png"},
+	paramtype = "light",
+	light_source = LIGHT_MAX - 10,
+	sunlight_propagates = true,
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:tuyau',
 	groups = {crumbly=3},
-	makes_footstep_sound = true,
-	sounds = {
-		footstep = "glass_footstep.ogg",
-		},
+	sounds =  default.node_sound_glass_defaults(),
+	
 })
 
 -- Craft du tuyau vide :
@@ -79,16 +78,14 @@ minetest.register_node("tuyau:tuyau_water", {
 	tiles = {"tuyau_water.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:tuyau',
 	groups = {crumbly=3},
+	sounds =  default.node_sound_glass_defaults(),
 })
 
 --Gestion (passage OFF du bloc si en contact avec autre bloc OFF)
-
+--[[
 minetest.register_abm({
 	nodenames = {"tuyau:tuyau_water"},
 	interval = 1,
@@ -97,7 +94,7 @@ minetest.register_abm({
 		
 	end,
 })
-
+]]--
 --Déclaration du tuyau de lave :
 
 minetest.register_node("tuyau:tuyau_lava", {
@@ -105,16 +102,14 @@ minetest.register_node("tuyau:tuyau_lava", {
 	tiles = {"tuyau_lava.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
-	drawtype = "glasslike",
 	drop = 'tuyau:tuyau',
 	groups = {crumbly=3},
+	sounds =  default.node_sound_glass_defaults(),
 })
 
 --Gestion (passage OFF du bloc si en contact avec autre bloc OFF)
-
+--[[
 minetest.register_abm({
 	nodenames = {"tuyau:tuyau_lava"},
 	interval = 1,
@@ -123,7 +118,7 @@ minetest.register_abm({
 		
 	end,
 })
-
+]]--
 -----------------
 --Pompe
 -----------------
@@ -135,10 +130,10 @@ minetest.register_node("tuyau:pompe", {
 	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_off.png","pompe2_cote_off.png","pompe2_cote_off.png","pompe2_cote_off.png"},
 	is_ground_content = false,
 	walkable = true,
-	light_source = 2,
 	diggable = true,
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 -- Craft de la pompe vide :
@@ -146,8 +141,8 @@ minetest.register_node("tuyau:pompe", {
 minetest.register_craft({
 	output = "tuyau:pompe",
 	recipe = {
-		{'default:steel_ingot', 'default:mese', 'default:steel_ingot'},
-		{'default:mese', '', 'default:mese'},
+		{'default:steel_ingot', 'default:mese_fragment', 'default:steel_ingot'},
+		{'default:mese_fragment', '', 'default:mese_fragment_fragment'},
 		{'default:steel_ingot', 'default:mese', 'default:steel_ingot'},
 	}
 })
@@ -159,10 +154,10 @@ minetest.register_node("tuyau:pompe_water", {
 	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	light_source = 8,
 	diggable = true,
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 --Déclaration de la pompe de lave :
@@ -172,10 +167,10 @@ minetest.register_node("tuyau:pompe_lava", {
 	tiles = {"pompe2_dessus_dessous.png","pompe2_dessus_dessous.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png","pompe2_cote_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	light_source = 8,
 	diggable = true,
 	drop = 'tuyau:pompe',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 -- Gestion
@@ -229,11 +224,10 @@ minetest.register_node("tuyau:sortie", {
 	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_off.png", "sortie_off.png", "sortie_off.png", "sortie_off.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 -- Craft de la sortie :
@@ -254,11 +248,10 @@ minetest.register_node("tuyau:sortie_water", {
 	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_on.png", "sortie_on.png", "sortie_on.png", "sortie_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 --Déclaration de la sortie de lave :
@@ -268,11 +261,10 @@ minetest.register_node("tuyau:sortie_lava", {
 	tiles = {"pompe2_dessus_dessous.png", "pompe2_dessus_dessous.png", "sortie_on.png", "sortie_on.png", "sortie_on.png", "sortie_on.png"},
 	is_ground_content = false,
 	walkable = true,
-	--pointable = true,
-	light_source = 8,
 	diggable = true,
 	drop = 'tuyau:sortie',
 	groups = {crumbly=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 -- Gestion
